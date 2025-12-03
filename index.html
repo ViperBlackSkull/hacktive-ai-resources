@@ -396,6 +396,7 @@
                 <button class="filter-tag" data-filter="image">Image</button>
                 <button class="filter-tag" data-filter="code">Code</button>
                 <button class="filter-tag" data-filter="audio">Audio</button>
+                <button class="filter-tag" data-filter="mcp">MCP</button>
             </div>
         </div>
 
@@ -991,6 +992,75 @@
             </div>
         </section>
 
+        <!-- MCP SERVERS -->
+        <section class="category">
+            <div class="category-header">
+                <span class="category-icon">🔌</span>
+                <h2>Top MCP Servers</h2>
+            </div>
+            <div class="grid">
+                <div class="card self-hosted">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=searxng.org&sz=128" alt="SearXNG" class="card-logo">
+                        <div class="card-title"><a href="https://github.com/ihor-sokoliuk/mcp-searxng" target="_blank">SearXNG MCP</a></div>
+                    </div>
+                    <p class="card-desc">Give your AI access to web search via self-hosted SearXNG. Privacy-focused, no API keys needed.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-self">Self-Hosted</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                </div>
+
+                <div class="card self-hosted">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=playwright.dev&sz=128" alt="Playwright" class="card-logo">
+                        <div class="card-title"><a href="https://github.com/executeautomation/mcp-playwright" target="_blank">Playwright MCP</a></div>
+                    </div>
+                    <p class="card-desc">Let AI control web browsers. Automate web tasks, scrape pages, fill forms, take screenshots.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-self">Self-Hosted</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=mem0.ai&sz=128" alt="mem0" class="card-logo">
+                        <div class="card-title"><a href="https://github.com/mem0ai/mem0-mcp" target="_blank">mem0 MCP</a></div>
+                    </div>
+                    <p class="card-desc">Persistent memory for AI. Remember conversations, user preferences, and context across sessions.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">No CC</span>
+                        <span class="tag tag-limit">Free tier</span>
+                    </div>
+                </div>
+
+                <div class="card self-hosted">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=obsidian.md&sz=128" alt="Obsidian" class="card-logo">
+                        <div class="card-title"><a href="https://github.com/smithery-ai/mcp-obsidian" target="_blank">Obsidian MCP</a></div>
+                    </div>
+                    <p class="card-desc">Connect AI to your Obsidian vault. Search notes, create links, and query your knowledge base.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-self">Self-Hosted</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                </div>
+
+                <div class="card self-hosted">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=github.com&sz=128" alt="Archon" class="card-logo">
+                        <div class="card-title"><a href="https://github.com/coleam00/archon" target="_blank">Archon</a></div>
+                    </div>
+                    <p class="card-desc">AI agent framework that builds AI agents. Meta-agent that creates and improves other agents.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-self">Self-Hosted</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <footer>
             <p>Last updated: December 2024 | <a href="https://hacktive.education">Hacktive Education</a></p>
             <p style="margin-top: 0.5rem; font-size: 0.8rem;">Contribute or suggest tools on <a href="https://github.com/ViperBlackSkull/hacktive-ai-resources">GitHub</a></p>
@@ -1065,7 +1135,12 @@
             'Qdrant': 'Fast vector database for embeddings. Essential for building semantic search and RAG.',
             'n8n': 'Visual workflow automation with AI. Connect 400+ apps and add AI processing steps.',
             'Flowise': 'Drag-and-drop LangChain builder. Create chatbots and agents without coding.',
-            'Langflow': 'Visual editor for AI workflows. Build complex multi-agent systems graphically.'
+            'Langflow': 'Visual editor for AI workflows. Build complex multi-agent systems graphically.',
+            'SearXNG MCP': 'Give Claude web search powers via your own SearXNG instance. No API keys, full privacy.',
+            'Playwright MCP': 'Let Claude control browsers to automate tasks, scrape data, and interact with web apps.',
+            'mem0 MCP': 'Give your AI persistent memory across sessions. Remembers context, preferences, and past conversations.',
+            'Obsidian MCP': 'Connect Claude to your second brain. Search, create, and link notes in your Obsidian vault.',
+            'Archon': 'An AI that builds AI agents. Uses Pydantic AI to create, test, and improve agents automatically.'
         };
 
         document.querySelectorAll('.card').forEach(card => {
@@ -1135,6 +1210,8 @@
                     matchesFilter = category.includes('coding');
                 } else if (activeFilter === 'audio') {
                     matchesFilter = category.includes('audio');
+                } else if (activeFilter === 'mcp') {
+                    matchesFilter = category.includes('mcp');
                 }
 
                 const matchesSearch = title.includes(query) || desc.includes(query);
