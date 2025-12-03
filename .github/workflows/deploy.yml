@@ -22,10 +22,10 @@ jobs:
       - name: Deploy to server
         run: |
           # Create tarball of site files (excluding git/github stuff)
-          tar --exclude='.git' --exclude='.github' --exclude='README.md' -czf site.tar.gz .
+          tar --exclude='.git' --exclude='.github' --exclude='README.md' --exclude='*.tar.gz' -czf /tmp/site.tar.gz .
 
           # Copy tarball to server
-          scp -i ~/.ssh/deploy_key site.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/tmp/
+          scp -i ~/.ssh/deploy_key /tmp/site.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/tmp/
 
           # Extract directly into LXC and clean up
           ssh -i ~/.ssh/deploy_key ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
