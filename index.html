@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free AI Resources | Hacktive Education</title>
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card: #1a1a1a;
+            --border: #2a2a2a;
+            --text: #e0e0e0;
+            --muted: #888;
+            --accent: #3b82f6;
+            --green: #22c55e;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        header p { color: var(--muted); font-size: 1.1rem; }
+        .category {
+            margin-bottom: 2.5rem;
+        }
+        .category h2 {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            transition: border-color 0.2s;
+        }
+        .card:hover { border-color: var(--accent); }
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .card h3 a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        .card h3 a:hover { color: var(--accent); }
+        .card p { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .tag {
+            display: inline-block;
+            background: var(--border);
+            color: var(--green);
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+        footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🤖 Free AI Resources</h1>
+        <p>A curated list of free AI tools and services I've found useful</p>
+    </header>
+
+    <section class="category">
+        <h2>💬 Chat & Assistants</h2>
+        <div class="grid">
+            <div class="card">
+                <h3><a href="https://gemini.google.com" target="_blank">Google Gemini</a></h3>
+                <p>Google's multimodal AI assistant with free tier</p>
+                <span class="tag">Free tier</span>
+            </div>
+            <div class="card">
+                <h3><a href="https://chat.openai.com" target="_blank">ChatGPT</a></h3>
+                <p>OpenAI's conversational AI (GPT-3.5 free)</p>
+                <span class="tag">Free tier</span>
+            </div>
+            <div class="card">
+                <h3><a href="https://claude.ai" target="_blank">Claude</a></h3>
+                <p>Anthropic's AI assistant with generous free usage</p>
+                <span class="tag">Free tier</span>
+            </div>
+            <div class="card">
+                <h3><a href="https://copilot.microsoft.com" target="_blank">Microsoft Copilot</a></h3>
+                <p>Microsoft's AI powered by GPT-4</p>
+                <span class="tag">Free</span>
+            </div>
+            <div class="card">
+                <h3><a href="https://poe.com" target="_blank">Poe</a></h3>
+                <p>Access multiple AI models in one place</p>
+                <span class="tag">Free tier</span>
+            </div>
+            <div class="card">
+                <h3><a href="https://huggingface.co/chat" target="_blank">HuggingChat</a></h3>
+                <p>Open-source AI chat by Hugging Face</p>
+                <span class="tag">Free</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="category">
+        <h2>🔍 Search & Research</h2>
+        <div class="grid">
+            <div class="card">
+                <h3><a href="https://tavily.com" target="_blank">Tavily</a></h3>
+                <p>AI-powered search API for LLMs and agents</p>
+                <span class="tag">1,000 credits/month</span>
+            </div>
+            <div class="card">
+                <h3><a href="https://perplexity.ai" target="_blank">Perplexity AI</a></h3>
+                <p>AI search engine with citations</p>
+                <span class="tag">Free tier</span>
+            </div>
+            <div class="card">
+                <h3><a href="https://you.com" target="_blank">You.com</a></h3>
+                <p>AI search with multiple modes</p>
+                <span class="tag">Free</span>
+            </div>
+            <div class="card">
+                <h3><a href="https://notebooklm.google.com" target="_blank">Google NotebookLM</a></h3>
+                <p>AI research assistant for your documents</p>
+                <span class="tag">Free</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="category">
+        <h2>🎨 Image Generation</h2>
+        <div class="grid">
+            <div class="card">
+                <h3><a href="https://ideogram.ai" target="_blank">Ideogram</a></h3>
+                <p>AI image generation with great text rendering</p>
+                <span class="tag">Free credits daily</span>
+            </div>
+            <div class="card">
+                <h3><a href="https://leonardo.ai" target="_blank">Leonardo AI</a></h3>
+                <p>AI image generation with fine-tuned models</p>
+                <span class="tag">150 credits/day</span>
+            </div>
+            <div class="card">
+                <h3><a href="https://playground.com" target="_blank">Playground AI</a></h3>
+                <p>Create and edit images with AI</p>
+                <span class="tag">Free tier</span>
+            </div>
+            <div class="card">
+                <h3><a href="https://creator.nightcafe.studio" target="_blank">NightCafe</a></h3>
+                <p>AI art generator with multiple styles</p>
+                <span class="tag">Free credits</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="category">
+        <h2>🔧 Google AI Studio & APIs</h2>
+        <div class="grid">
+            <div class="card">
+                <h3><a href="https://aistudio.google.com" target="_blank">Google AI Studio</a></h3>
+                <p>Build with Gemini API, free tier available</p>
+                <span class="tag">Free tier</span>
+            </div>
+            <div class="card">
+                <h3><a href="https://cloud.google.com/vertex-ai" target="_blank">Vertex AI</a></h3>
+                <p>Google Cloud ML platform ($300 free credits)</p>
+                <span class="tag">$300 credits</span>
+            </div>
+            <div class="card">
+                <h3><a href="https://colab.research.google.com" target="_blank">Google Colab</a></h3>
+                <p>Free Jupyter notebooks with GPU access</p>
+                <span class="tag">Free GPU</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="category">
+        <h2>💻 Coding & Development</h2>
+        <div class="grid">
+            <div class="card">
+                <h3><a href="https://github.com/features/copilot" target="_blank">GitHub Copilot</a></h3>
+                <p>AI pair programmer (free for students/OSS)</p>
+                <span class="tag">Free for students</span>
+            </div>
+            <div class="card">
+                <h3><a href="https://codeium.com" target="_blank">Codeium</a></h3>
+                <p>Free AI code completion for 70+ languages</p>
+                <span class="tag">Free</span>
+            </div>
+            <div class="card">
+                <h3><a href="https://cursor.sh" target="_blank">Cursor</a></h3>
+                <p>AI-first code editor</p>
+                <span class="tag">Free tier</span>
+            </div>
+            <div class="card">
+                <h3><a href="https://replit.com" target="_blank">Replit AI</a></h3>
+                <p>AI-powered coding in the browser</p>
+                <span class="tag">Free tier</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="category">
+        <h2>🎵 Audio & Voice</h2>
+        <div class="grid">
+            <div class="card">
+                <h3><a href="https://elevenlabs.io" target="_blank">ElevenLabs</a></h3>
+                <p>AI voice generation and cloning</p>
+                <span class="tag">10k chars/month</span>
+            </div>
+            <div class="card">
+                <h3><a href="https://suno.ai" target="_blank">Suno AI</a></h3>
+                <p>AI music generation from text prompts</p>
+                <span class="tag">50 credits/day</span>
+            </div>
+            <div class="card">
+                <h3><a href="https://podcast.adobe.com" target="_blank">Adobe Podcast</a></h3>
+                <p>AI audio enhancement and transcription</p>
+                <span class="tag">Free</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="category">
+        <h2>📝 Writing & Documents</h2>
+        <div class="grid">
+            <div class="card">
+                <h3><a href="https://quillbot.com" target="_blank">QuillBot</a></h3>
+                <p>AI paraphrasing and grammar checking</p>
+                <span class="tag">Free tier</span>
+            </div>
+            <div class="card">
+                <h3><a href="https://gamma.app" target="_blank">Gamma</a></h3>
+                <p>AI-powered presentations and documents</p>
+                <span class="tag">Free tier</span>
+            </div>
+            <div class="card">
+                <h3><a href="https://tome.app" target="_blank">Tome</a></h3>
+                <p>AI presentation builder</p>
+                <span class="tag">Free tier</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Last updated: December 2024 | <a href="https://hacktive.education" style="color: var(--accent);">Hacktive Education</a></p>
+    </footer>
+</body>
+</html>
