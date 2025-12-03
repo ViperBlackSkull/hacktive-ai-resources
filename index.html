@@ -4,273 +4,829 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free AI Resources | Hacktive Education</title>
+    <link rel="icon" href="https://fav.farm/🤖" />
     <style>
         :root {
-            --bg: #0f0f0f;
-            --card: #1a1a1a;
-            --border: #2a2a2a;
-            --text: #e0e0e0;
-            --muted: #888;
+            --bg: #0a0a0a;
+            --card: #141414;
+            --card-hover: #1a1a1a;
+            --border: #252525;
+            --text: #e5e5e5;
+            --muted: #737373;
             --accent: #3b82f6;
             --green: #22c55e;
+            --orange: #f97316;
+            --purple: #a855f7;
+            --cyan: #06b6d4;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
-            padding: 2rem;
-            max-width: 1200px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1400px;
             margin: 0 auto;
+            padding: 2rem;
         }
         header {
             text-align: center;
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border);
-        }
-        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        header p { color: var(--muted); font-size: 1.1rem; }
-        .category {
-            margin-bottom: 2.5rem;
-        }
-        .category h2 {
-            font-size: 1.3rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border);
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1rem;
-        }
-        .card {
-            background: var(--card);
+            margin-bottom: 2rem;
+            padding: 3rem 1rem;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+            border-radius: 16px;
             border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1.25rem;
-            transition: border-color 0.2s;
         }
-        .card:hover { border-color: var(--accent); }
-        .card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        header p { color: var(--muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+        /* Legend */
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: var(--card);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        .legend-item {
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--muted);
         }
-        .card h3 a {
-            color: var(--text);
-            text-decoration: none;
-        }
-        .card h3 a:hover { color: var(--accent); }
-        .card p { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; }
+
+        /* Tags */
         .tag {
-            display: inline-block;
-            background: var(--border);
-            color: var(--green);
-            font-size: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.7rem;
+            font-weight: 600;
             padding: 0.2rem 0.5rem;
             border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
         }
+        .tag-free { background: rgba(34, 197, 94, 0.15); color: var(--green); }
+        .tag-cc { background: rgba(249, 115, 22, 0.15); color: var(--orange); }
+        .tag-self { background: rgba(168, 85, 247, 0.15); color: var(--purple); }
+        .tag-limit { background: rgba(6, 182, 212, 0.15); color: var(--cyan); }
+
+        /* Category */
+        .category {
+            margin-bottom: 3rem;
+        }
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .category-header h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .category-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1rem;
+        }
+
+        /* Card */
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .card:hover {
+            background: var(--card-hover);
+            border-color: #333;
+            transform: translateY(-2px);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .card-logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            object-fit: contain;
+            background: #fff;
+            padding: 4px;
+        }
+        .card-logo-placeholder {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--accent), var(--purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .card-title {
+            flex: 1;
+        }
+        .card-title a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .card-title a:hover { color: var(--accent); }
+        .card-desc {
+            color: var(--muted);
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: auto;
+        }
+
+        /* Self-hosted highlight */
+        .card.self-hosted {
+            border-color: rgba(168, 85, 247, 0.3);
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.05) 0%, transparent 100%);
+        }
+        .card.self-hosted:hover {
+            border-color: rgba(168, 85, 247, 0.5);
+        }
+
         footer {
             margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
+            padding: 2rem;
             text-align: center;
             color: var(--muted);
-            font-size: 0.9rem;
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border);
+        }
+        footer a { color: var(--accent); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .container { padding: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .grid { grid-template-columns: 1fr; }
+            .legend { gap: 1rem; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>🤖 Free AI Resources</h1>
-        <p>A curated list of free AI tools and services I've found useful</p>
-    </header>
+    <div class="container">
+        <header>
+            <h1>Free AI Resources</h1>
+            <p>A curated list of free AI tools and services. Updated regularly with credit card requirements and self-hosted options.</p>
+        </header>
 
-    <section class="category">
-        <h2>💬 Chat & Assistants</h2>
-        <div class="grid">
-            <div class="card">
-                <h3><a href="https://gemini.google.com" target="_blank">Google Gemini</a></h3>
-                <p>Google's multimodal AI assistant with free tier</p>
-                <span class="tag">Free tier</span>
+        <div class="legend">
+            <div class="legend-item">
+                <span class="tag tag-free">No CC</span>
+                <span>No credit card required</span>
             </div>
-            <div class="card">
-                <h3><a href="https://chat.openai.com" target="_blank">ChatGPT</a></h3>
-                <p>OpenAI's conversational AI (GPT-3.5 free)</p>
-                <span class="tag">Free tier</span>
+            <div class="legend-item">
+                <span class="tag tag-cc">CC Required</span>
+                <span>Credit card needed</span>
             </div>
-            <div class="card">
-                <h3><a href="https://claude.ai" target="_blank">Claude</a></h3>
-                <p>Anthropic's AI assistant with generous free usage</p>
-                <span class="tag">Free tier</span>
+            <div class="legend-item">
+                <span class="tag tag-self">Self-Hosted</span>
+                <span>Run on your own hardware</span>
             </div>
-            <div class="card">
-                <h3><a href="https://copilot.microsoft.com" target="_blank">Microsoft Copilot</a></h3>
-                <p>Microsoft's AI powered by GPT-4</p>
-                <span class="tag">Free</span>
-            </div>
-            <div class="card">
-                <h3><a href="https://poe.com" target="_blank">Poe</a></h3>
-                <p>Access multiple AI models in one place</p>
-                <span class="tag">Free tier</span>
-            </div>
-            <div class="card">
-                <h3><a href="https://huggingface.co/chat" target="_blank">HuggingChat</a></h3>
-                <p>Open-source AI chat by Hugging Face</p>
-                <span class="tag">Free</span>
+            <div class="legend-item">
+                <span class="tag tag-limit">Limits</span>
+                <span>Usage limits apply</span>
             </div>
         </div>
-    </section>
 
-    <section class="category">
-        <h2>🔍 Search & Research</h2>
-        <div class="grid">
-            <div class="card">
-                <h3><a href="https://tavily.com" target="_blank">Tavily</a></h3>
-                <p>AI-powered search API for LLMs and agents</p>
-                <span class="tag">1,000 credits/month</span>
+        <!-- CHAT & ASSISTANTS -->
+        <section class="category">
+            <div class="category-header">
+                <span class="category-icon">💬</span>
+                <h2>Chat & Assistants</h2>
             </div>
-            <div class="card">
-                <h3><a href="https://perplexity.ai" target="_blank">Perplexity AI</a></h3>
-                <p>AI search engine with citations</p>
-                <span class="tag">Free tier</span>
-            </div>
-            <div class="card">
-                <h3><a href="https://you.com" target="_blank">You.com</a></h3>
-                <p>AI search with multiple modes</p>
-                <span class="tag">Free</span>
-            </div>
-            <div class="card">
-                <h3><a href="https://notebooklm.google.com" target="_blank">Google NotebookLM</a></h3>
-                <p>AI research assistant for your documents</p>
-                <span class="tag">Free</span>
-            </div>
-        </div>
-    </section>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=128" alt="Gemini" class="card-logo">
+                        <div class="card-title"><a href="https://gemini.google.com" target="_blank">Google Gemini</a></div>
+                    </div>
+                    <p class="card-desc">Google's multimodal AI assistant. Access to Gemini Pro with generous daily limits.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">No CC</span>
+                        <span class="tag tag-limit">Daily limit</span>
+                    </div>
+                </div>
 
-    <section class="category">
-        <h2>🎨 Image Generation</h2>
-        <div class="grid">
-            <div class="card">
-                <h3><a href="https://ideogram.ai" target="_blank">Ideogram</a></h3>
-                <p>AI image generation with great text rendering</p>
-                <span class="tag">Free credits daily</span>
-            </div>
-            <div class="card">
-                <h3><a href="https://leonardo.ai" target="_blank">Leonardo AI</a></h3>
-                <p>AI image generation with fine-tuned models</p>
-                <span class="tag">150 credits/day</span>
-            </div>
-            <div class="card">
-                <h3><a href="https://playground.com" target="_blank">Playground AI</a></h3>
-                <p>Create and edit images with AI</p>
-                <span class="tag">Free tier</span>
-            </div>
-            <div class="card">
-                <h3><a href="https://creator.nightcafe.studio" target="_blank">NightCafe</a></h3>
-                <p>AI art generator with multiple styles</p>
-                <span class="tag">Free credits</span>
-            </div>
-        </div>
-    </section>
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=chat.openai.com&sz=128" alt="ChatGPT" class="card-logo">
+                        <div class="card-title"><a href="https://chat.openai.com" target="_blank">ChatGPT</a></div>
+                    </div>
+                    <p class="card-desc">OpenAI's conversational AI. Free tier includes GPT-4o with limited messages per 5-hour window.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">No CC</span>
+                        <span class="tag tag-limit">5hr window</span>
+                    </div>
+                </div>
 
-    <section class="category">
-        <h2>🔧 Google AI Studio & APIs</h2>
-        <div class="grid">
-            <div class="card">
-                <h3><a href="https://aistudio.google.com" target="_blank">Google AI Studio</a></h3>
-                <p>Build with Gemini API, free tier available</p>
-                <span class="tag">Free tier</span>
-            </div>
-            <div class="card">
-                <h3><a href="https://cloud.google.com/vertex-ai" target="_blank">Vertex AI</a></h3>
-                <p>Google Cloud ML platform ($300 free credits)</p>
-                <span class="tag">$300 credits</span>
-            </div>
-            <div class="card">
-                <h3><a href="https://colab.research.google.com" target="_blank">Google Colab</a></h3>
-                <p>Free Jupyter notebooks with GPU access</p>
-                <span class="tag">Free GPU</span>
-            </div>
-        </div>
-    </section>
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=128" alt="Claude" class="card-logo">
+                        <div class="card-title"><a href="https://claude.ai" target="_blank">Claude</a></div>
+                    </div>
+                    <p class="card-desc">Anthropic's AI assistant. Free access to Claude Sonnet with 5-hour usage windows.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">No CC</span>
+                        <span class="tag tag-limit">5hr window</span>
+                    </div>
+                </div>
 
-    <section class="category">
-        <h2>💻 Coding & Development</h2>
-        <div class="grid">
-            <div class="card">
-                <h3><a href="https://github.com/features/copilot" target="_blank">GitHub Copilot</a></h3>
-                <p>AI pair programmer (free for students/OSS)</p>
-                <span class="tag">Free for students</span>
-            </div>
-            <div class="card">
-                <h3><a href="https://codeium.com" target="_blank">Codeium</a></h3>
-                <p>Free AI code completion for 70+ languages</p>
-                <span class="tag">Free</span>
-            </div>
-            <div class="card">
-                <h3><a href="https://cursor.sh" target="_blank">Cursor</a></h3>
-                <p>AI-first code editor</p>
-                <span class="tag">Free tier</span>
-            </div>
-            <div class="card">
-                <h3><a href="https://replit.com" target="_blank">Replit AI</a></h3>
-                <p>AI-powered coding in the browser</p>
-                <span class="tag">Free tier</span>
-            </div>
-        </div>
-    </section>
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=copilot.microsoft.com&sz=128" alt="Copilot" class="card-logo">
+                        <div class="card-title"><a href="https://copilot.microsoft.com" target="_blank">Microsoft Copilot</a></div>
+                    </div>
+                    <p class="card-desc">Microsoft's AI powered by GPT-4. Free access with Microsoft account.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">No CC</span>
+                    </div>
+                </div>
 
-    <section class="category">
-        <h2>🎵 Audio & Voice</h2>
-        <div class="grid">
-            <div class="card">
-                <h3><a href="https://elevenlabs.io" target="_blank">ElevenLabs</a></h3>
-                <p>AI voice generation and cloning</p>
-                <span class="tag">10k chars/month</span>
-            </div>
-            <div class="card">
-                <h3><a href="https://suno.ai" target="_blank">Suno AI</a></h3>
-                <p>AI music generation from text prompts</p>
-                <span class="tag">50 credits/day</span>
-            </div>
-            <div class="card">
-                <h3><a href="https://podcast.adobe.com" target="_blank">Adobe Podcast</a></h3>
-                <p>AI audio enhancement and transcription</p>
-                <span class="tag">Free</span>
-            </div>
-        </div>
-    </section>
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=poe.com&sz=128" alt="Poe" class="card-logo">
+                        <div class="card-title"><a href="https://poe.com" target="_blank">Poe</a></div>
+                    </div>
+                    <p class="card-desc">Access multiple AI models (GPT-4, Claude, Llama) in one place with daily credits.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">No CC</span>
+                        <span class="tag tag-limit">Daily credits</span>
+                    </div>
+                </div>
 
-    <section class="category">
-        <h2>📝 Writing & Documents</h2>
-        <div class="grid">
-            <div class="card">
-                <h3><a href="https://quillbot.com" target="_blank">QuillBot</a></h3>
-                <p>AI paraphrasing and grammar checking</p>
-                <span class="tag">Free tier</span>
-            </div>
-            <div class="card">
-                <h3><a href="https://gamma.app" target="_blank">Gamma</a></h3>
-                <p>AI-powered presentations and documents</p>
-                <span class="tag">Free tier</span>
-            </div>
-            <div class="card">
-                <h3><a href="https://tome.app" target="_blank">Tome</a></h3>
-                <p>AI presentation builder</p>
-                <span class="tag">Free tier</span>
-            </div>
-        </div>
-    </section>
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=huggingface.co&sz=128" alt="HuggingChat" class="card-logo">
+                        <div class="card-title"><a href="https://huggingface.co/chat" target="_blank">HuggingChat</a></div>
+                    </div>
+                    <p class="card-desc">Open-source AI chat by Hugging Face. Access to Llama, Mistral, and other open models.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">No CC</span>
+                    </div>
+                </div>
 
-    <footer>
-        <p>Last updated: December 2024 | <a href="https://hacktive.education" style="color: var(--accent);">Hacktive Education</a></p>
-    </footer>
+                <div class="card self-hosted">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=openwebui.com&sz=128" alt="Open WebUI" class="card-logo">
+                        <div class="card-title"><a href="https://openwebui.com" target="_blank">Open WebUI</a></div>
+                    </div>
+                    <p class="card-desc">Self-hosted ChatGPT alternative. Beautiful UI for Ollama and OpenAI-compatible APIs.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-self">Self-Hosted</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                </div>
+
+                <div class="card self-hosted">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=librechat.ai&sz=128" alt="LibreChat" class="card-logo">
+                        <div class="card-title"><a href="https://librechat.ai" target="_blank">LibreChat</a></div>
+                    </div>
+                    <p class="card-desc">Open-source ChatGPT clone. Connects to multiple backends including Ollama, OpenAI, Claude.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-self">Self-Hosted</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEARCH & RESEARCH -->
+        <section class="category">
+            <div class="category-header">
+                <span class="category-icon">🔍</span>
+                <h2>Search & Research</h2>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=tavily.com&sz=128" alt="Tavily" class="card-logo">
+                        <div class="card-title"><a href="https://tavily.com" target="_blank">Tavily</a></div>
+                    </div>
+                    <p class="card-desc">AI-powered search API for LLMs and agents. Perfect for RAG applications.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">No CC</span>
+                        <span class="tag tag-limit">1,000/month</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=perplexity.ai&sz=128" alt="Perplexity" class="card-logo">
+                        <div class="card-title"><a href="https://perplexity.ai" target="_blank">Perplexity AI</a></div>
+                    </div>
+                    <p class="card-desc">AI search engine with citations. Deep Research available with daily cap.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">No CC</span>
+                        <span class="tag tag-limit">Daily cap</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=you.com&sz=128" alt="You.com" class="card-logo">
+                        <div class="card-title"><a href="https://you.com" target="_blank">You.com</a></div>
+                    </div>
+                    <p class="card-desc">AI search with multiple modes: Smart, Genius, Research, and Create.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">No CC</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=notebooklm.google.com&sz=128" alt="NotebookLM" class="card-logo">
+                        <div class="card-title"><a href="https://notebooklm.google.com" target="_blank">Google NotebookLM</a></div>
+                    </div>
+                    <p class="card-desc">AI research assistant. Upload documents and get AI-powered insights and audio summaries.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">No CC</span>
+                    </div>
+                </div>
+
+                <div class="card self-hosted">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=searxng.org&sz=128" alt="SearXNG" class="card-logo">
+                        <div class="card-title"><a href="https://searxng.org" target="_blank">SearXNG</a></div>
+                    </div>
+                    <p class="card-desc">Privacy-respecting metasearch engine. Aggregate results from 70+ search engines.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-self">Self-Hosted</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOCAL LLM RUNNERS -->
+        <section class="category">
+            <div class="category-header">
+                <span class="category-icon">🖥️</span>
+                <h2>Local LLM Runners</h2>
+            </div>
+            <div class="grid">
+                <div class="card self-hosted">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=ollama.ai&sz=128" alt="Ollama" class="card-logo">
+                        <div class="card-title"><a href="https://ollama.ai" target="_blank">Ollama</a></div>
+                    </div>
+                    <p class="card-desc">Run Llama 3, Mistral, Gemma locally. Easy setup, lightweight (3-6GB RAM). Most popular local LLM tool.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-self">Self-Hosted</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                </div>
+
+                <div class="card self-hosted">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=github.com/mudler/LocalAI&sz=128" alt="LocalAI" class="card-logo">
+                        <div class="card-title"><a href="https://localai.io" target="_blank">LocalAI</a></div>
+                    </div>
+                    <p class="card-desc">OpenAI API drop-in replacement. No GPU required. Supports text, audio, images, video.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-self">Self-Hosted</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                </div>
+
+                <div class="card self-hosted">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=lmstudio.ai&sz=128" alt="LM Studio" class="card-logo">
+                        <div class="card-title"><a href="https://lmstudio.ai" target="_blank">LM Studio</a></div>
+                    </div>
+                    <p class="card-desc">Desktop app to run local LLMs. Beautiful UI, model browser, and local server mode.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-self">Self-Hosted</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                </div>
+
+                <div class="card self-hosted">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=jan.ai&sz=128" alt="Jan" class="card-logo">
+                        <div class="card-title"><a href="https://jan.ai" target="_blank">Jan</a></div>
+                    </div>
+                    <p class="card-desc">Open-source ChatGPT alternative that runs 100% offline. Clean UI, easy model management.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-self">Self-Hosted</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- IMAGE GENERATION -->
+        <section class="category">
+            <div class="category-header">
+                <span class="category-icon">🎨</span>
+                <h2>Image Generation</h2>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=ideogram.ai&sz=128" alt="Ideogram" class="card-logo">
+                        <div class="card-title"><a href="https://ideogram.ai" target="_blank">Ideogram</a></div>
+                    </div>
+                    <p class="card-desc">AI image generation with excellent text rendering. Great for logos and typography.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">No CC</span>
+                        <span class="tag tag-limit">Daily credits</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=leonardo.ai&sz=128" alt="Leonardo" class="card-logo">
+                        <div class="card-title"><a href="https://leonardo.ai" target="_blank">Leonardo AI</a></div>
+                    </div>
+                    <p class="card-desc">AI image generation with fine-tuned models. Great for game assets and concept art.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">No CC</span>
+                        <span class="tag tag-limit">150/day</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=playground.com&sz=128" alt="Playground" class="card-logo">
+                        <div class="card-title"><a href="https://playground.com" target="_blank">Playground AI</a></div>
+                    </div>
+                    <p class="card-desc">Create and edit images with AI. Mixed Image Editing and canvas features.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">No CC</span>
+                        <span class="tag tag-limit">Daily limit</span>
+                    </div>
+                </div>
+
+                <div class="card self-hosted">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=github.com/comfyanonymous/ComfyUI&sz=128" alt="ComfyUI" class="card-logo">
+                        <div class="card-title"><a href="https://github.com/comfyanonymous/ComfyUI" target="_blank">ComfyUI</a></div>
+                    </div>
+                    <p class="card-desc">Node-based Stable Diffusion UI. Most powerful and flexible option for advanced workflows.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-self">Self-Hosted</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                </div>
+
+                <div class="card self-hosted">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=github.com/AUTOMATIC1111&sz=128" alt="A1111" class="card-logo">
+                        <div class="card-title"><a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui" target="_blank">AUTOMATIC1111</a></div>
+                    </div>
+                    <p class="card-desc">The original Stable Diffusion WebUI. Beginner-friendly with extensive plugin ecosystem.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-self">Self-Hosted</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                </div>
+
+                <div class="card self-hosted">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=fooocus.dev&sz=128" alt="Fooocus" class="card-logo">
+                        <div class="card-title"><a href="https://github.com/lllyasviel/Fooocus" target="_blank">Fooocus</a></div>
+                    </div>
+                    <p class="card-desc">Simplified Stable Diffusion. Midjourney-like experience, minimal configuration needed.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-self">Self-Hosted</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CODING & DEVELOPMENT -->
+        <section class="category">
+            <div class="category-header">
+                <span class="category-icon">💻</span>
+                <h2>Coding & Development</h2>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=github.com&sz=128" alt="Copilot" class="card-logo">
+                        <div class="card-title"><a href="https://github.com/features/copilot" target="_blank">GitHub Copilot</a></div>
+                    </div>
+                    <p class="card-desc">AI pair programmer. Free for verified students, teachers, and OSS maintainers.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">Free for students</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=codeium.com&sz=128" alt="Codeium" class="card-logo">
+                        <div class="card-title"><a href="https://codeium.com" target="_blank">Codeium</a></div>
+                    </div>
+                    <p class="card-desc">Free AI code completion for 70+ languages. Works in VS Code, JetBrains, Vim, and more.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">No CC</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=cursor.sh&sz=128" alt="Cursor" class="card-logo">
+                        <div class="card-title"><a href="https://cursor.sh" target="_blank">Cursor</a></div>
+                    </div>
+                    <p class="card-desc">AI-first code editor (VS Code fork). Composer, Chat, and inline editing features.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">No CC</span>
+                        <span class="tag tag-limit">Limited requests</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=replit.com&sz=128" alt="Replit" class="card-logo">
+                        <div class="card-title"><a href="https://replit.com" target="_blank">Replit AI</a></div>
+                    </div>
+                    <p class="card-desc">AI-powered coding in the browser. Ghostwriter for code completion and chat.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">No CC</span>
+                        <span class="tag tag-limit">Limited</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=aistudio.google.com&sz=128" alt="AI Studio" class="card-logo">
+                        <div class="card-title"><a href="https://aistudio.google.com" target="_blank">Google AI Studio</a></div>
+                    </div>
+                    <p class="card-desc">Build with Gemini API. Prompt design, testing, and free API access.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">No CC</span>
+                        <span class="tag tag-limit">Rate limited</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=colab.research.google.com&sz=128" alt="Colab" class="card-logo">
+                        <div class="card-title"><a href="https://colab.research.google.com" target="_blank">Google Colab</a></div>
+                    </div>
+                    <p class="card-desc">Free Jupyter notebooks with GPU/TPU access. Great for ML experimentation.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">No CC</span>
+                        <span class="tag tag-limit">GPU limits</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AUDIO & VOICE -->
+        <section class="category">
+            <div class="category-header">
+                <span class="category-icon">🎵</span>
+                <h2>Audio & Voice</h2>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=elevenlabs.io&sz=128" alt="ElevenLabs" class="card-logo">
+                        <div class="card-title"><a href="https://elevenlabs.io" target="_blank">ElevenLabs</a></div>
+                    </div>
+                    <p class="card-desc">Best-in-class AI voice generation and cloning. Ultra-realistic voices.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">No CC</span>
+                        <span class="tag tag-limit">10k chars/mo</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=suno.ai&sz=128" alt="Suno" class="card-logo">
+                        <div class="card-title"><a href="https://suno.ai" target="_blank">Suno AI</a></div>
+                    </div>
+                    <p class="card-desc">AI music generation from text prompts. Create full songs with vocals.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">No CC</span>
+                        <span class="tag tag-limit">50 credits/day</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=podcast.adobe.com&sz=128" alt="Adobe Podcast" class="card-logo">
+                        <div class="card-title"><a href="https://podcast.adobe.com" target="_blank">Adobe Podcast</a></div>
+                    </div>
+                    <p class="card-desc">AI audio enhancement. Remove background noise and improve voice quality.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">No CC</span>
+                    </div>
+                </div>
+
+                <div class="card self-hosted">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=github.com/coqui-ai&sz=128" alt="Coqui" class="card-logo">
+                        <div class="card-title"><a href="https://github.com/coqui-ai/TTS" target="_blank">Coqui TTS</a></div>
+                    </div>
+                    <p class="card-desc">Open-source text-to-speech. Voice cloning with XTTS. High-quality neural voices.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-self">Self-Hosted</span>
+                        <span class="tag tag-free">Free (MPL2.0)</span>
+                    </div>
+                </div>
+
+                <div class="card self-hosted">
+                    <div class="card-header">
+                        <div class="card-logo-placeholder">W</div>
+                        <div class="card-title"><a href="https://github.com/openai/whisper" target="_blank">Whisper</a></div>
+                    </div>
+                    <p class="card-desc">OpenAI's speech recognition model. Transcription and translation in 99 languages.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-self">Self-Hosted</span>
+                        <span class="tag tag-free">Free (MIT)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WRITING & DOCUMENTS -->
+        <section class="category">
+            <div class="category-header">
+                <span class="category-icon">📝</span>
+                <h2>Writing & Documents</h2>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=quillbot.com&sz=128" alt="QuillBot" class="card-logo">
+                        <div class="card-title"><a href="https://quillbot.com" target="_blank">QuillBot</a></div>
+                    </div>
+                    <p class="card-desc">AI paraphrasing, grammar checking, and summarization tool.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">No CC</span>
+                        <span class="tag tag-limit">125 words</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=gamma.app&sz=128" alt="Gamma" class="card-logo">
+                        <div class="card-title"><a href="https://gamma.app" target="_blank">Gamma</a></div>
+                    </div>
+                    <p class="card-desc">AI-powered presentations and documents. Beautiful templates, easy export.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">No CC</span>
+                        <span class="tag tag-limit">400 credits</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=tome.app&sz=128" alt="Tome" class="card-logo">
+                        <div class="card-title"><a href="https://tome.app" target="_blank">Tome</a></div>
+                    </div>
+                    <p class="card-desc">AI presentation builder. Generate slides from prompts or documents.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-free">No CC</span>
+                        <span class="tag tag-limit">Limited</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RAG & KNOWLEDGE -->
+        <section class="category">
+            <div class="category-header">
+                <span class="category-icon">🧠</span>
+                <h2>RAG & Knowledge Bases</h2>
+            </div>
+            <div class="grid">
+                <div class="card self-hosted">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=anythingllm.com&sz=128" alt="AnythingLLM" class="card-logo">
+                        <div class="card-title"><a href="https://anythingllm.com" target="_blank">AnythingLLM</a></div>
+                    </div>
+                    <p class="card-desc">All-in-one AI app. Chat with documents, build agents, RAG capabilities built-in.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-self">Self-Hosted</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                </div>
+
+                <div class="card self-hosted">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=privategpt.dev&sz=128" alt="PrivateGPT" class="card-logo">
+                        <div class="card-title"><a href="https://privategpt.dev" target="_blank">PrivateGPT</a></div>
+                    </div>
+                    <p class="card-desc">Chat with your documents privately. 100% local, no data leaves your machine.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-self">Self-Hosted</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                </div>
+
+                <div class="card self-hosted">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=qdrant.tech&sz=128" alt="Qdrant" class="card-logo">
+                        <div class="card-title"><a href="https://qdrant.tech" target="_blank">Qdrant</a></div>
+                    </div>
+                    <p class="card-desc">Vector database for AI. High-performance similarity search for embeddings.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-self">Self-Hosted</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AUTOMATION & AGENTS -->
+        <section class="category">
+            <div class="category-header">
+                <span class="category-icon">🤖</span>
+                <h2>Automation & Agents</h2>
+            </div>
+            <div class="grid">
+                <div class="card self-hosted">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=n8n.io&sz=128" alt="n8n" class="card-logo">
+                        <div class="card-title"><a href="https://n8n.io" target="_blank">n8n</a></div>
+                    </div>
+                    <p class="card-desc">Workflow automation with AI. Connect 400+ apps with AI agents and LLM nodes.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-self">Self-Hosted</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                </div>
+
+                <div class="card self-hosted">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=flowiseai.com&sz=128" alt="Flowise" class="card-logo">
+                        <div class="card-title"><a href="https://flowiseai.com" target="_blank">Flowise</a></div>
+                    </div>
+                    <p class="card-desc">Build LLM apps visually. Drag & drop LangChain flows for chatbots and agents.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-self">Self-Hosted</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                </div>
+
+                <div class="card self-hosted">
+                    <div class="card-header">
+                        <img src="https://www.google.com/s2/favicons?domain=langflow.org&sz=128" alt="Langflow" class="card-logo">
+                        <div class="card-title"><a href="https://langflow.org" target="_blank">Langflow</a></div>
+                    </div>
+                    <p class="card-desc">Visual framework for building multi-agent and RAG applications.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-self">Self-Hosted</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Last updated: December 2024 | <a href="https://hacktive.education">Hacktive Education</a></p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem;">Contribute or suggest tools on <a href="https://github.com/ViperBlackSkull/hacktive-ai-resources">GitHub</a></p>
+        </footer>
+    </div>
 </body>
 </html>
