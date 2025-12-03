@@ -199,11 +199,162 @@
         footer a { color: var(--accent); text-decoration: none; }
         footer a:hover { text-decoration: underline; }
 
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+            padding: 1rem;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            max-width: 400px;
+            width: 100%;
+            transform: scale(0.9);
+            transition: transform 0.2s ease;
+        }
+        .modal-overlay.active .modal {
+            transform: scale(1);
+        }
+        .modal-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .modal-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        .modal-summary {
+            color: var(--text);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+        }
+        .modal-footer {
+            display: flex;
+            gap: 0.75rem;
+        }
+        .modal-btn {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            text-align: center;
+        }
+        .modal-btn-primary {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+        }
+        .modal-btn-primary:hover {
+            background: #2563eb;
+        }
+        .modal-btn-secondary {
+            background: transparent;
+            color: var(--muted);
+            border: 1px solid var(--border);
+        }
+        .modal-btn-secondary:hover {
+            background: var(--card-hover);
+            color: var(--text);
+        }
+        .card { cursor: pointer; }
+        .card.hidden { display: none; }
+
+        /* Search */
+        .search-container {
+            margin-bottom: 2rem;
+        }
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            font-size: 1rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .search-input:focus {
+            border-color: var(--accent);
+        }
+        .search-input::placeholder {
+            color: var(--muted);
+        }
+        .filter-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 0.75rem;
+        }
+        .filter-tag {
+            padding: 0.4rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--muted);
+        }
+        .filter-tag:hover {
+            border-color: #444;
+            color: var(--text);
+        }
+        .filter-tag.active {
+            border-color: var(--accent);
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
+        }
+        .filter-tag.active-green {
+            border-color: var(--green);
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--green);
+        }
+        .filter-tag.active-purple {
+            border-color: var(--purple);
+            background: rgba(168, 85, 247, 0.1);
+            color: var(--purple);
+        }
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--muted);
+            display: none;
+        }
+        .no-results.show { display: block; }
+
         @media (max-width: 768px) {
             .container { padding: 1rem; }
             h1 { font-size: 1.75rem; }
             .grid { grid-template-columns: 1fr; }
             .legend { gap: 1rem; }
+            .filter-tags { gap: 0.4rem; }
         }
     </style>
 </head>
@@ -232,6 +383,23 @@
                 <span>Usage limits apply</span>
             </div>
         </div>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search tools by name or description...">
+            <div class="filter-tags">
+                <button class="filter-tag" data-filter="all">All</button>
+                <button class="filter-tag" data-filter="no-cc">No Credit Card</button>
+                <button class="filter-tag" data-filter="self-hosted">Self-Hosted</button>
+                <button class="filter-tag" data-filter="chat">Chat</button>
+                <button class="filter-tag" data-filter="search">Search</button>
+                <button class="filter-tag" data-filter="image">Image</button>
+                <button class="filter-tag" data-filter="code">Code</button>
+                <button class="filter-tag" data-filter="audio">Audio</button>
+            </div>
+        </div>
+
+        <div class="no-results" id="noResults">No tools found matching your search.</div>
 
         <!-- CHAT & ASSISTANTS -->
         <section class="category">
@@ -828,5 +996,178 @@
             <p style="margin-top: 0.5rem; font-size: 0.8rem;">Contribute or suggest tools on <a href="https://github.com/ViperBlackSkull/hacktive-ai-resources">GitHub</a></p>
         </footer>
     </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal">
+            <div class="modal-header">
+                <img src="" alt="" class="card-logo" id="modalLogo">
+                <span class="modal-title" id="modalTitle"></span>
+            </div>
+            <p class="modal-summary" id="modalSummary"></p>
+            <div class="modal-footer">
+                <button class="modal-btn modal-btn-secondary" id="modalClose">Close</button>
+                <a href="" target="_blank" class="modal-btn modal-btn-primary" id="modalLink">Visit Site</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('modal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalSummary = document.getElementById('modalSummary');
+        const modalLogo = document.getElementById('modalLogo');
+        const modalLink = document.getElementById('modalLink');
+        const modalClose = document.getElementById('modalClose');
+
+        // Tool summaries
+        const summaries = {
+            'Google Gemini': 'Best for users in the Google ecosystem. Excellent at multimodal tasks, long context, and integrates with Google Workspace.',
+            'ChatGPT': 'The most popular AI assistant. Great general-purpose tool with plugins, image generation, and code interpreter.',
+            'Claude': 'Excels at long documents, nuanced writing, and coding. Known for thoughtful, detailed responses.',
+            'Microsoft Copilot': 'Best free option with GPT-4 access. Integrated with Bing search for up-to-date information.',
+            'Poe': 'Try multiple AI models without separate accounts. Good for comparing outputs across different LLMs.',
+            'HuggingChat': 'Access bleeding-edge open-source models. Great for privacy-conscious users who want open alternatives.',
+            'Open WebUI': 'The best self-hosted ChatGPT alternative. Pair with Ollama for a complete local AI setup.',
+            'LibreChat': 'Use one interface for all your AI providers. Supports OpenAI, Claude, and local models.',
+            'Tavily': 'Purpose-built search API for AI agents. Essential for building RAG applications and AI assistants.',
+            'Perplexity AI': 'AI-powered search that cites sources. Great for research when you need verifiable information.',
+            'You.com': 'Search engine with multiple AI modes. Useful for quick answers, research, and creative tasks.',
+            'Google NotebookLM': 'Upload documents and have AI conversations about them. Creates podcast-style audio summaries.',
+            'SearXNG': 'Privacy-first metasearch. Self-host to aggregate search results without tracking.',
+            'Ollama': 'The easiest way to run LLMs locally. One command to download and run Llama, Mistral, and more.',
+            'LocalAI': 'Drop-in OpenAI API replacement. Run any model locally with the same API you know.',
+            'LM Studio': 'Beautiful desktop app for local LLMs. Browse models, chat, and run a local API server.',
+            'Jan': 'Offline-first ChatGPT alternative. Clean interface, easy model management, 100% private.',
+            'Ideogram': 'Best free AI for text in images. Creates readable logos, posters, and typography.',
+            'Leonardo AI': 'Fine-tuned models for game art and concept design. Great for consistent character generation.',
+            'Playground AI': 'Mixed image editing with AI. Combine real photos with AI generation on a canvas.',
+            'ComfyUI': 'Node-based workflow for Stable Diffusion. Maximum flexibility for advanced users.',
+            'AUTOMATIC1111': 'The classic Stable Diffusion interface. Huge plugin ecosystem, beginner-friendly.',
+            'Fooocus': 'Midjourney-style simplicity for Stable Diffusion. Great results with minimal configuration.',
+            'GitHub Copilot': 'AI coding assistant in your IDE. Suggests code as you type, understands context.',
+            'Codeium': 'Free Copilot alternative. Works in 70+ languages across popular IDEs.',
+            'Cursor': 'AI-native code editor. Chat with your codebase, get inline suggestions, and refactor easily.',
+            'Replit AI': 'Code in the browser with AI help. Great for learning, prototyping, and collaboration.',
+            'Google AI Studio': 'Build and test Gemini prompts. Get free API keys for your projects.',
+            'Google Colab': 'Free Jupyter notebooks with GPU. Run ML experiments without local hardware.',
+            'ElevenLabs': 'Most realistic AI voices available. Clone voices, create audiobooks, and podcasts.',
+            'Suno AI': 'Generate complete songs with lyrics and vocals. Describe a song, get music in minutes.',
+            'Adobe Podcast': 'Clean up audio recordings instantly. Remove background noise with one click.',
+            'Coqui TTS': 'Open-source voice synthesis. Clone voices locally with XTTS model.',
+            'Whisper': 'OpenAI speech recognition. Transcribe audio in 99 languages with high accuracy.',
+            'QuillBot': 'Paraphrase and rewrite text. Useful for avoiding plagiarism and improving clarity.',
+            'Gamma': 'Generate presentations from prompts. Beautiful slides without design skills.',
+            'Tome': 'AI-first presentation tool. Create pitch decks and reports with AI-generated content.',
+            'AnythingLLM': 'All-in-one local AI platform. Chat with documents, build agents, manage knowledge.',
+            'PrivateGPT': 'Chat with your documents 100% locally. No data leaves your machine.',
+            'Qdrant': 'Fast vector database for embeddings. Essential for building semantic search and RAG.',
+            'n8n': 'Visual workflow automation with AI. Connect 400+ apps and add AI processing steps.',
+            'Flowise': 'Drag-and-drop LangChain builder. Create chatbots and agents without coding.',
+            'Langflow': 'Visual editor for AI workflows. Build complex multi-agent systems graphically.'
+        };
+
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('a')) return; // Don't open modal when clicking links
+
+                const title = card.querySelector('.card-title a').textContent;
+                const logo = card.querySelector('.card-logo');
+                const placeholder = card.querySelector('.card-logo-placeholder');
+                const link = card.querySelector('.card-title a').href;
+
+                modalTitle.textContent = title;
+                modalSummary.textContent = summaries[title] || card.querySelector('.card-desc').textContent;
+                modalLink.href = link;
+
+                if (logo) {
+                    modalLogo.src = logo.src;
+                    modalLogo.style.display = 'block';
+                } else if (placeholder) {
+                    modalLogo.style.display = 'none';
+                }
+
+                modal.classList.add('active');
+            });
+        });
+
+        modalClose.addEventListener('click', () => modal.classList.remove('active'));
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.remove('active');
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') modal.classList.remove('active');
+        });
+
+        // Search and filter functionality
+        const searchInput = document.getElementById('searchInput');
+        const filterTags = document.querySelectorAll('.filter-tag');
+        const cards = document.querySelectorAll('.card');
+        const categories = document.querySelectorAll('.category');
+        const noResults = document.getElementById('noResults');
+
+        let activeFilter = 'all';
+
+        function filterCards() {
+            const query = searchInput.value.toLowerCase();
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const title = card.querySelector('.card-title a').textContent.toLowerCase();
+                const desc = card.querySelector('.card-desc').textContent.toLowerCase();
+                const tags = card.querySelector('.card-tags').textContent.toLowerCase();
+                const isSelfHosted = card.classList.contains('self-hosted');
+                const category = card.closest('.category').querySelector('h2').textContent.toLowerCase();
+
+                let matchesFilter = true;
+                if (activeFilter === 'no-cc') {
+                    matchesFilter = tags.includes('no cc') || tags.includes('free');
+                } else if (activeFilter === 'self-hosted') {
+                    matchesFilter = isSelfHosted;
+                } else if (activeFilter === 'chat') {
+                    matchesFilter = category.includes('chat');
+                } else if (activeFilter === 'search') {
+                    matchesFilter = category.includes('search');
+                } else if (activeFilter === 'image') {
+                    matchesFilter = category.includes('image');
+                } else if (activeFilter === 'code') {
+                    matchesFilter = category.includes('coding');
+                } else if (activeFilter === 'audio') {
+                    matchesFilter = category.includes('audio');
+                }
+
+                const matchesSearch = title.includes(query) || desc.includes(query);
+                const isVisible = matchesFilter && matchesSearch;
+
+                card.classList.toggle('hidden', !isVisible);
+                if (isVisible) visibleCount++;
+            });
+
+            // Hide empty categories
+            categories.forEach(cat => {
+                const visibleCards = cat.querySelectorAll('.card:not(.hidden)').length;
+                cat.style.display = visibleCards === 0 ? 'none' : 'block';
+            });
+
+            noResults.classList.toggle('show', visibleCount === 0);
+        }
+
+        searchInput.addEventListener('input', filterCards);
+
+        filterTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                filterTags.forEach(t => t.classList.remove('active', 'active-green', 'active-purple'));
+                tag.classList.add('active');
+                if (tag.dataset.filter === 'no-cc') tag.classList.add('active-green');
+                if (tag.dataset.filter === 'self-hosted') tag.classList.add('active-purple');
+                activeFilter = tag.dataset.filter;
+                filterCards();
+            });
+        });
+
+        // Set "All" as default active
+        filterTags[0].classList.add('active');
+    </script>
 </body>
 </html>
