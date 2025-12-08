@@ -478,6 +478,255 @@
             color: var(--heart);
         }
 
+        /* Comparison Section Styles */
+        .comparison-section {
+            margin-bottom: 2rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        .comparison-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .comparison-title::before {
+            content: '';
+            width: 4px;
+            height: 1.1rem;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* Nomenclature Table */
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin: 0 -0.5rem;
+            padding: 0 0.5rem;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+        .comparison-table th,
+        .comparison-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .comparison-table th {
+            background: rgba(59, 130, 246, 0.1);
+            font-weight: 600;
+            color: var(--text);
+            white-space: nowrap;
+        }
+        .comparison-table th:first-child {
+            border-radius: 8px 0 0 0;
+        }
+        .comparison-table th:last-child {
+            border-radius: 0 8px 0 0;
+        }
+        .comparison-table td {
+            color: var(--text);
+        }
+        .comparison-table td:first-child {
+            min-width: 200px;
+        }
+        .comparison-table a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .comparison-table a:hover {
+            text-decoration: underline;
+        }
+        .feature-desc {
+            font-size: 0.75rem;
+            color: var(--muted);
+            display: block;
+            margin-top: 0.25rem;
+        }
+
+        /* Tiers Grid */
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        .tier-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+        }
+        .tier-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .tier-header h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        .tier-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            background: #fff;
+            padding: 3px;
+        }
+        .tier-price {
+            font-size: 0.85rem;
+            color: var(--green);
+            font-weight: 600;
+        }
+        .tier-features {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex: 1;
+        }
+        .tier-features li {
+            font-size: 0.8rem;
+            color: var(--muted);
+            padding: 0.3rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+        .tier-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--green);
+            font-size: 0.7rem;
+        }
+        .tier-link {
+            display: block;
+            text-align: center;
+            padding: 0.6rem;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: background 0.2s;
+        }
+        .tier-link:hover {
+            background: #2563eb;
+        }
+        .tier-pro {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px dashed var(--border);
+            font-size: 0.75rem;
+            color: var(--muted);
+        }
+        .tier-pro strong {
+            color: var(--purple);
+        }
+
+        /* API Grid */
+        .api-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        .api-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.25rem;
+        }
+        .api-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .api-header h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        .api-logo {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            background: #fff;
+            padding: 3px;
+        }
+        .api-link {
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .api-link:hover {
+            text-decoration: underline;
+        }
+        .api-models {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .api-model {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 0.25rem 1rem;
+            padding: 0.6rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+        .api-model.free-tier {
+            background: rgba(34, 197, 94, 0.08);
+            border-color: rgba(34, 197, 94, 0.3);
+        }
+        .api-model.recommended {
+            background: rgba(59, 130, 246, 0.08);
+            border-color: rgba(59, 130, 246, 0.3);
+            grid-template-columns: 1fr;
+        }
+        .model-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .model-price {
+            font-size: 0.75rem;
+            color: var(--green);
+            text-align: right;
+        }
+        .model-context {
+            font-size: 0.7rem;
+            color: var(--muted);
+            grid-column: span 2;
+        }
+        .model-rec {
+            font-size: 0.75rem;
+            color: var(--muted);
+            font-style: italic;
+        }
+        .api-note {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px dashed var(--border);
+            font-size: 0.75rem;
+            color: var(--cyan);
+        }
+
         @media (max-width: 768px) {
             .container { padding: 1rem; }
             h1 { font-size: 1.75rem; }
@@ -499,6 +748,18 @@
                 right: 1rem;
                 width: 42px;
                 height: 42px;
+            }
+            .comparison-section {
+                padding: 1rem;
+            }
+            .comparison-table th,
+            .comparison-table td {
+                padding: 0.5rem;
+                font-size: 0.75rem;
+            }
+            .tiers-grid,
+            .api-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -548,11 +809,340 @@
                 <button class="filter-tag" data-filter="code">Code</button>
                 <button class="filter-tag" data-filter="audio">Audio</button>
                 <button class="filter-tag" data-filter="mcp">MCP</button>
+                <button class="filter-tag" data-filter="comparison">Comparison</button>
                 <button class="filter-tag" data-filter="favorites">❤️ Favorites</button>
             </div>
         </div>
 
         <div class="no-results" id="noResults">No tools found matching your search.</div>
+
+        <!-- AI PLATFORM COMPARISON -->
+        <section class="category" id="platform-comparison">
+            <div class="category-header">
+                <span class="category-icon">📊</span>
+                <h2>AI Platform Comparison</h2>
+            </div>
+
+            <!-- Feature Nomenclature Mapping -->
+            <div class="comparison-section">
+                <h3 class="comparison-title">Feature Nomenclature (Same Concept, Different Names)</h3>
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>ChatGPT</th>
+                                <th>Gemini</th>
+                                <th>Claude</th>
+                                <th>Copilot</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Custom AI Assistants</strong><br><span class="feature-desc">Pre-configured AI with custom instructions</span></td>
+                                <td><a href="https://chat.openai.com/gpts" target="_blank">GPTs</a></td>
+                                <td><a href="https://gemini.google.com" target="_blank">Gems</a></td>
+                                <td><a href="https://claude.ai" target="_blank">Projects</a></td>
+                                <td>Copilot Studio</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Deep Analysis Mode</strong><br><span class="feature-desc">Extended reasoning for complex tasks</span></td>
+                                <td>o1 / o1-pro</td>
+                                <td>Deep Think</td>
+                                <td>Extended Thinking</td>
+                                <td>Think Deeper</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Web Research</strong><br><span class="feature-desc">Multi-source research with citations</span></td>
+                                <td>Deep Research</td>
+                                <td>Deep Research</td>
+                                <td>Research Mode</td>
+                                <td>Researcher</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Code Execution</strong><br><span class="feature-desc">Run code in sandbox environment</span></td>
+                                <td>Code Interpreter</td>
+                                <td>Code Execution</td>
+                                <td>Artifacts</td>
+                                <td>Code Interpreter</td>
+                            </tr>
+                            <tr>
+                                <td><strong>File/Document Analysis</strong><br><span class="feature-desc">Upload and analyze documents</span></td>
+                                <td>File Uploads</td>
+                                <td>File Uploads</td>
+                                <td>Knowledge Base</td>
+                                <td>File Analysis</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Image Generation</strong><br><span class="feature-desc">Create images from text</span></td>
+                                <td>DALL-E 3</td>
+                                <td>Imagen 3</td>
+                                <td>—</td>
+                                <td>Designer</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Video Generation</strong><br><span class="feature-desc">Create videos from text</span></td>
+                                <td>Sora</td>
+                                <td>Veo 2/3</td>
+                                <td>—</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Voice Mode</strong><br><span class="feature-desc">Real-time voice conversation</span></td>
+                                <td>Advanced Voice</td>
+                                <td>Gemini Live</td>
+                                <td>Voice Mode</td>
+                                <td>Voice Chat</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Memory/Context</strong><br><span class="feature-desc">Remember past conversations</span></td>
+                                <td>Memory</td>
+                                <td>Memory</td>
+                                <td>Projects</td>
+                                <td>Memory</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Coding Agent</strong><br><span class="feature-desc">Autonomous code tasks</span></td>
+                                <td>Codex</td>
+                                <td>Jules</td>
+                                <td>Claude Code</td>
+                                <td>GitHub Copilot</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Paid Tiers Comparison -->
+            <div class="comparison-section">
+                <h3 class="comparison-title">Paid Subscription Tiers</h3>
+                <div class="tiers-grid">
+                    <!-- ChatGPT -->
+                    <div class="tier-card">
+                        <div class="tier-header chatgpt">
+                            <img src="https://www.google.com/s2/favicons?domain=chat.openai.com&sz=128" alt="ChatGPT" class="tier-logo">
+                            <div>
+                                <h4>ChatGPT Plus</h4>
+                                <span class="tier-price">$20/month</span>
+                            </div>
+                        </div>
+                        <ul class="tier-features">
+                            <li>GPT-4o & GPT-5 access</li>
+                            <li>Create custom GPTs</li>
+                            <li>DALL-E 3 image generation</li>
+                            <li>Advanced Voice Mode</li>
+                            <li>Deep Research & Codex agent</li>
+                            <li>Limited Sora video generation</li>
+                            <li>~80 messages/3 hours on GPT-4o</li>
+                        </ul>
+                        <a href="https://chat.openai.com" target="_blank" class="tier-link">chat.openai.com</a>
+                        <div class="tier-pro">
+                            <strong>Pro tier: $200/mo</strong> — Unlimited GPT-5, o1-pro mode, priority access
+                        </div>
+                    </div>
+
+                    <!-- Gemini -->
+                    <div class="tier-card">
+                        <div class="tier-header gemini">
+                            <img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=128" alt="Gemini" class="tier-logo">
+                            <div>
+                                <h4>Google AI Pro</h4>
+                                <span class="tier-price">$20/month</span>
+                            </div>
+                        </div>
+                        <ul class="tier-features">
+                            <li>Gemini 2.5 Pro access</li>
+                            <li>1M token context window</li>
+                            <li>Create custom Gems</li>
+                            <li>Deep Research mode</li>
+                            <li>Veo 2 video generation</li>
+                            <li>Google Workspace integration</li>
+                            <li>NotebookLM Plus (20 audio/day)</li>
+                            <li>Jules coding agent (5x limits)</li>
+                        </ul>
+                        <a href="https://gemini.google.com" target="_blank" class="tier-link">gemini.google.com</a>
+                        <div class="tier-pro">
+                            <strong>Ultra tier: $250/mo</strong> — Veo 3, Deep Think, Gemini Agent, 20x Jules
+                        </div>
+                    </div>
+
+                    <!-- Claude -->
+                    <div class="tier-card">
+                        <div class="tier-header claude">
+                            <img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=128" alt="Claude" class="tier-logo">
+                            <div>
+                                <h4>Claude Pro</h4>
+                                <span class="tier-price">$20/month</span>
+                            </div>
+                        </div>
+                        <ul class="tier-features">
+                            <li>Claude Sonnet 4.5 & Opus 4</li>
+                            <li>5x usage vs free tier</li>
+                            <li>Projects & Knowledge Bases</li>
+                            <li>Artifacts (code, docs, diagrams)</li>
+                            <li>Extended Thinking mode</li>
+                            <li>Google Workspace integration</li>
+                            <li>Remote MCP connections</li>
+                            <li>~45 messages/5 hours</li>
+                        </ul>
+                        <a href="https://claude.ai" target="_blank" class="tier-link">claude.ai</a>
+                        <div class="tier-pro">
+                            <strong>Max tiers: $100-$200/mo</strong> — 5-20x usage, priority access
+                        </div>
+                    </div>
+
+                    <!-- Perplexity -->
+                    <div class="tier-card">
+                        <div class="tier-header perplexity">
+                            <img src="https://www.google.com/s2/favicons?domain=perplexity.ai&sz=128" alt="Perplexity" class="tier-logo">
+                            <div>
+                                <h4>Perplexity Pro</h4>
+                                <span class="tier-price">$20/month</span>
+                            </div>
+                        </div>
+                        <ul class="tier-features">
+                            <li>300+ Pro searches/day</li>
+                            <li>GPT-5.1, Claude 4.5, Gemini 3</li>
+                            <li>Deep Research mode</li>
+                            <li>500 daily research queries</li>
+                            <li>10x citations per answer</li>
+                            <li>Unlimited file uploads</li>
+                            <li>Image generation</li>
+                            <li>$5 monthly API credit</li>
+                        </ul>
+                        <a href="https://perplexity.ai" target="_blank" class="tier-link">perplexity.ai</a>
+                        <div class="tier-pro">
+                            <strong>Education: $5/mo</strong> — Students & faculty discount
+                        </div>
+                    </div>
+
+                    <!-- Copilot -->
+                    <div class="tier-card">
+                        <div class="tier-header copilot">
+                            <img src="https://www.google.com/s2/favicons?domain=copilot.microsoft.com&sz=128" alt="Copilot" class="tier-logo">
+                            <div>
+                                <h4>Copilot Pro</h4>
+                                <span class="tier-price">$20/month</span>
+                            </div>
+                        </div>
+                        <ul class="tier-features">
+                            <li>GPT-5 Smart Mode</li>
+                            <li>Priority access during peak</li>
+                            <li>Copilot in Office apps</li>
+                            <li>100 Designer images/day</li>
+                            <li>Think Deeper mode</li>
+                            <li>Copilot Studio included</li>
+                            <li>300-context memory span</li>
+                            <li>Requires M365 subscription</li>
+                        </ul>
+                        <a href="https://copilot.microsoft.com" target="_blank" class="tier-link">copilot.microsoft.com</a>
+                        <div class="tier-pro">
+                            <strong>Day Pass: $4</strong> — 24hr access, 300 turns or 100 images
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- API Access Points -->
+            <div class="comparison-section">
+                <h3 class="comparison-title">API Access & Developer Pricing</h3>
+                <div class="api-grid">
+                    <!-- OpenAI API -->
+                    <div class="api-card">
+                        <div class="api-header">
+                            <img src="https://www.google.com/s2/favicons?domain=openai.com&sz=128" alt="OpenAI" class="api-logo">
+                            <div>
+                                <h4>OpenAI API</h4>
+                                <a href="https://platform.openai.com" target="_blank" class="api-link">platform.openai.com</a>
+                            </div>
+                        </div>
+                        <div class="api-models">
+                            <div class="api-model">
+                                <span class="model-name">GPT-4o</span>
+                                <span class="model-price">$2.50 / $10 per 1M tokens</span>
+                                <span class="model-context">128K context</span>
+                            </div>
+                            <div class="api-model">
+                                <span class="model-name">GPT-4o mini</span>
+                                <span class="model-price">$0.15 / $0.60 per 1M tokens</span>
+                                <span class="model-context">128K context</span>
+                            </div>
+                            <div class="api-model recommended">
+                                <span class="model-name">Recommended</span>
+                                <span class="model-rec">GPT-4o mini for most tasks, GPT-4o for complex reasoning</span>
+                            </div>
+                        </div>
+                        <div class="api-note">Free $5 credit for new accounts</div>
+                    </div>
+
+                    <!-- Google AI Studio -->
+                    <div class="api-card">
+                        <div class="api-header">
+                            <img src="https://www.google.com/s2/favicons?domain=aistudio.google.com&sz=128" alt="AI Studio" class="api-logo">
+                            <div>
+                                <h4>Google AI Studio</h4>
+                                <a href="https://aistudio.google.com" target="_blank" class="api-link">aistudio.google.com</a>
+                            </div>
+                        </div>
+                        <div class="api-models">
+                            <div class="api-model free-tier">
+                                <span class="model-name">Free Tier</span>
+                                <span class="model-price">$0 — No credit card required</span>
+                                <span class="model-context">1M context, 5-15 RPM</span>
+                            </div>
+                            <div class="api-model">
+                                <span class="model-name">Gemini 1.5 Flash</span>
+                                <span class="model-price">$0.15 / $0.60 per 1M tokens</span>
+                                <span class="model-context">1M context</span>
+                            </div>
+                            <div class="api-model">
+                                <span class="model-name">Gemini 1.5 Pro</span>
+                                <span class="model-price">$1.25 / $5 per 1M tokens</span>
+                                <span class="model-context">1M context</span>
+                            </div>
+                            <div class="api-model recommended">
+                                <span class="model-name">Recommended</span>
+                                <span class="model-rec">Start with free tier, use Flash for production</span>
+                            </div>
+                        </div>
+                        <div class="api-note">Best free API tier available. $300 GCP credits for new users.</div>
+                    </div>
+
+                    <!-- Anthropic API -->
+                    <div class="api-card">
+                        <div class="api-header">
+                            <img src="https://www.google.com/s2/favicons?domain=anthropic.com&sz=128" alt="Anthropic" class="api-logo">
+                            <div>
+                                <h4>Anthropic API</h4>
+                                <a href="https://console.anthropic.com" target="_blank" class="api-link">console.anthropic.com</a>
+                            </div>
+                        </div>
+                        <div class="api-models">
+                            <div class="api-model">
+                                <span class="model-name">Claude Haiku</span>
+                                <span class="model-price">$0.25 / $1.25 per 1M tokens</span>
+                                <span class="model-context">200K context</span>
+                            </div>
+                            <div class="api-model">
+                                <span class="model-name">Claude Sonnet 4.5</span>
+                                <span class="model-price">$3 / $15 per 1M tokens</span>
+                                <span class="model-context">200K context</span>
+                            </div>
+                            <div class="api-model">
+                                <span class="model-name">Claude Opus 4</span>
+                                <span class="model-price">$15 / $75 per 1M tokens</span>
+                                <span class="model-context">200K context</span>
+                            </div>
+                            <div class="api-model recommended">
+                                <span class="model-name">Recommended</span>
+                                <span class="model-rec">Haiku for speed, Sonnet for balance, Opus for complex tasks</span>
+                            </div>
+                        </div>
+                        <div class="api-note">50% off with Batch API, 90% off with prompt caching</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- CHAT & ASSISTANTS -->
         <section class="category">
@@ -1214,7 +1804,7 @@
         </section>
 
         <footer>
-            <p>Last updated: December 2024 | <a href="https://hacktive.education">Hacktive Education</a></p>
+            <p>Last updated: December 2025 | <a href="https://hacktive.education">Hacktive Education</a></p>
             <p style="margin-top: 0.5rem; font-size: 0.8rem;">Contribute or suggest tools on <a href="https://github.com/ViperBlackSkull/hacktive-ai-resources">GitHub</a></p>
         </footer>
     </div>
@@ -1444,6 +2034,8 @@
                     matchesFilter = category.includes('audio');
                 } else if (activeFilter === 'mcp') {
                     matchesFilter = category.includes('mcp');
+                } else if (activeFilter === 'comparison') {
+                    matchesFilter = category.includes('comparison');
                 } else if (activeFilter === 'favorites') {
                     const toolName = card.querySelector('.card-title a').textContent;
                     matchesFilter = favorites.includes(toolName);
