@@ -1,0 +1,16 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [staging, main]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    uses: viperblackskull/hacktive-infrastructure/.github/workflows/_build-and-deploy.yml@main
+    with:
+      service_name: hacktive-ai-resources
+      service_port: 80
+    secrets:
+      GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      INFRA_REPO_PAT: ${{ secrets.INFRA_REPO_PAT }}
