@@ -16,6 +16,7 @@ jobs:
       image_tag: ${{ steps.meta.outputs.tags }}
       branch: ${{ steps.branch.outputs.name }}
       environment: ${{ steps.branch.outputs.environment }}
+      tag: ${{ steps.branch.outputs.tag }}
 
     steps:
       - name: Checkout code
